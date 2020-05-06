@@ -1,9 +1,10 @@
+import DefaultContainerLayout from "src/layouts/DefaultContainerLayout/DefaultContainerLayout"
+
 const HomePage = () => {
   return (
-    <div>
-      <h1>CookIT - Web Edition</h1>
+    <DefaultContainerLayout>
       <p>Start cooking - Now with CookIT in your browser! SO COOL!</p>
-    </div>
+    </DefaultContainerLayout>
   )
 }
 
