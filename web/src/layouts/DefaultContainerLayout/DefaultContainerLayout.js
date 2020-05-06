@@ -5,17 +5,11 @@ const DefaultContainerLayout = ({ children }) => {
     <div style={styles.container}>
 
       <div style={styles.header}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <h1>CookIT! Web Edition</h1>
-          <img src="../../../public/images/icon.png" style={styles.headerIcon} />
-        </div>
+        <h1>CookIT! Web Edition</h1>
+        <img src="../../../public/images/icon.png" style={styles.headerIcon} />
       </div>
 
       <main>{children}</main>
-
-      <div style={styles.footer}>
-        <p style={styles.footerText}>&copy; Falconeri, Schindler</p>
-      </div>
 
     </div>
   )
@@ -31,6 +25,7 @@ const styles = {
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     height: 110,
     position: 'absolute',
     backgroundColor: 'white',
@@ -39,15 +34,6 @@ const styles = {
   },
   headerIcon: {
     height: 100
-  },
-  footer: {
-    height: 30,
-    position: 'absolute',
-    bottom: 0,
-    width: '100%'
-  },
-  footerText: {
-    textAlign: 'center'
   }
 };
 
