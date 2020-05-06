@@ -5,7 +5,10 @@ const DefaultContainerLayout = ({ children }) => {
     <div style={styles.container}>
 
       <div style={styles.header}>
-        <h1>CookIT! Web Edition<img src="../../../public/images/icon.png" style={styles.headerIcon} /></h1>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <h1>CookIT! Web Edition</h1>
+          <img src="../../../public/images/icon.png" style={styles.headerIcon} />
+        </div>
       </div>
 
       <main>{children}</main>
@@ -26,14 +29,16 @@ const styles = {
   },
   header: {
     width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
     height: 110,
     position: 'absolute',
     backgroundColor: 'white',
     top: 0,
-    boxShadow: '0 0 10px 0 #000'
+    boxShadow: '0 0 8px 0 grey'
   },
   headerIcon: {
-    height: 80
+    height: 100
   },
   footer: {
     height: 30,
