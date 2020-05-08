@@ -16,14 +16,14 @@ const HomePage = () => {
 
         <div
           style={{ ...styles.listItem, ...{ backgroundColor: '#93c47d' } }}
-          onClick={() => navigate(routes.recipes())}
+          onClick={() => navigate(routes.newRecipe())}
         >
           <h2 style={styles.listItemLabel}>Neues Rezept</h2>
         </div>
 
         <div
           style={{ ...styles.listItem, ...{ backgroundColor: '#8e7cc3' } }}
-          onClick={() => navigate(routes.recipes())}
+          onClick={() => navigate(routes.favorites())}
         >
           <h2 style={styles.listItemLabel}>Favoriten</h2>
         </div>
@@ -42,14 +42,14 @@ const HomePage = () => {
 
         <div
           style={{ ...styles.listItem, ...{ backgroundColor: '#f6b26b' } }}
-          onClick={() => navigate(routes.recipes())}
+          onClick={() => navigate(routes.randomrecipe())}
         >
           <h2 style={styles.listItemLabel}>Zufällig</h2>
         </div>
 
         <div
           style={{ ...styles.listItem, ...{ backgroundColor: '#dd7e6b' } }}
-          onClick={() => navigate(routes.recipes())}
+          onClick={() => navigate(routes.settings())}
         >
           <h2 style={styles.listItemLabel}>Einstellungen</h2>
         </div>
