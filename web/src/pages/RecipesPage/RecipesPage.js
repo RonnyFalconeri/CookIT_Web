@@ -1,4 +1,4 @@
-import DefaultContainerLayout from "src/layouts/DefaultContainerLayout/DefaultContainerLayout"
+import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
 
 const RecipePage = () => {
   return (

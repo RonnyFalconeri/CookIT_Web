@@ -1,9 +1,10 @@
+import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+
 const RandomrecipePage = () => {
   return (
-    <div>
+    <DefaultContainerLayout>
       <h1>RandomrecipePage</h1>
-      <p>Find me in ./web/src/pages/RandomrecipePage/RandomrecipePage.js</p>
-    </div>
+    </DefaultContainerLayout>
   )
 }
 

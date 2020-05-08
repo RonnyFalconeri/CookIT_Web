@@ -1,5 +1,5 @@
 import { Link, routes, navigate } from '@redwoodjs/router'
-import DefaultContainerLayout from "src/layouts/DefaultContainerLayout/DefaultContainerLayout"
+import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
 
 const HomePage = () => {
   return (
@@ -33,12 +33,6 @@ const HomePage = () => {
 
       <div style={styles.row}>
 
-        <div
-          style={{ ...styles.listItem, ...{ backgroundColor: '#76a5af' } }}
-          onClick={() => navigate(routes.recipes())}
-        >
-          <h2 style={styles.listItemLabel}>Online-Suche</h2>
-        </div>
 
         <div
           style={{ ...styles.listItem, ...{ backgroundColor: '#f6b26b' } }}
