@@ -1,3 +1,4 @@
+import { Link, routes } from '@redwoodjs/router'
 import '../../../public/css/styling.css';
 
 const DefaultContainerLayout = ({ children }) => {
@@ -6,10 +7,12 @@ const DefaultContainerLayout = ({ children }) => {
 
       <div style={styles.header}>
         <h1>CookIT! Web Edition</h1>
-        <img src="../../../public/images/icon.png" style={styles.headerIcon} />
+        <Link to={routes.home()}>
+          <img src="../../../public/images/icon.png" style={styles.headerIcon} />
+        </Link>
       </div>
 
-      <main>{children}</main>
+      <main style={styles.mainContent}>{children}</main>
 
     </div>
   )
@@ -34,6 +37,11 @@ const styles = {
   },
   headerIcon: {
     height: 100
+  },
+  mainContent: {
+    width: '70%',
+    margin: '0 auto',
+    paddingTop: 10
   }
 };
 
