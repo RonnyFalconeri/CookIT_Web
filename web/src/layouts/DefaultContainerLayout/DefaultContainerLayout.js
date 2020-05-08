@@ -21,7 +21,7 @@ const DefaultContainerLayout = ({ children }) => {
 const styles = {
   container: {
     backgroundColor: '#f3f3f3',
-    height: '100vh',
+    minHeight: '100vh',
     paddingTop: 120
   },
   header: {
