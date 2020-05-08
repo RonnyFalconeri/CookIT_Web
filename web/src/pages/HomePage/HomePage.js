@@ -1,4 +1,4 @@
-import { Link, routes, navigate } from '@redwoodjs/router'
+import { routes, navigate } from '@redwoodjs/router'
 import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
 
 const HomePage = () => {

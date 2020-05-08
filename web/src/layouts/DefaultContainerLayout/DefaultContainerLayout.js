@@ -30,7 +30,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: 110,
-    position: 'absolute',
+    position: 'fixed',
     backgroundColor: 'white',
     top: 0,
     boxShadow: '0 0 8px 0 grey'

@@ -1,6 +1,7 @@
+import { routes, navigate } from '@redwoodjs/router'
 import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
 
-const RecipePage = () => {
+const RecipesPage = () => {
   return (
     <DefaultContainerLayout>
 
@@ -8,7 +9,7 @@ const RecipePage = () => {
 
         <div
           style={styles.listItem}
-          onClick={() => navigate(routes.recipes())}
+          onClick={() => navigate(routes.recipe())}
         >
           <img src="../../../public/images/recipeDefaultImage.png" style={styles.image} />
           <h2 style={styles.title}>Spaghetti Bolognese</h2>
@@ -27,7 +28,7 @@ const RecipePage = () => {
   )
 }
 
-export default RecipePage
+export default RecipesPage
 
 const styles = {
   list: {
