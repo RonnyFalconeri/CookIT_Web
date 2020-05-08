@@ -6,9 +6,24 @@
       "web"
     ]
   },
+  "dependencies": {
+    "apollo-datasource": "^0.1.3",
+    "apollo-datasource-rest": "^0.1.5",
+    "apollo-server": "^2.6.1",
+    "apollo-server-testing": "2.6.1",
+    "graphql": "^14.6.0",
+    "isemail": "^3.1.3",
+    "nodemon": "^1.18.4",
+    "sqlite3": "^4.0.3"
+  },
   "devDependencies": {
     "@redwoodjs/core": "^0.6.0",
-    "netlify-plugin-prisma-provider": "^0.3.0"
+    "netlify-plugin-prisma-provider": "^0.3.0",
+    "apollo-link": "^1.2.3",
+    "apollo-link-http": "^1.5.5",
+    "jest": "^23.6.0",
+    "nock": "^10.0.2",
+    "node-fetch": "^2.2.1"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config"
@@ -16,5 +31,23 @@
   "engines": {
     "node": ">=12",
     "yarn": ">=1.15"
-  }
+  },
+  "name": "CookIT_Web",
+  "description": ">**HEADS UP:** RedwoodJS is _NOT_ ready for use in Production. It relies heavily on Prisma2, which is currently in testing with an expected production release coming soon. See status at [\"Is Prisma2 Ready?\"](https://isprisma2ready.com)",
+  "version": "1.0.0",
+  "main": "babel.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RonnyFalconeri/CookIT_Web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RonnyFalconeri/CookIT_Web/issues"
+  },
+  "homepage": "https://github.com/RonnyFalconeri/CookIT_Web#readme"
 }
