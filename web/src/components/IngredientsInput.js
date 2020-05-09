@@ -42,11 +42,15 @@ export default class IngredientsInput extends React.Component {
   }
 
   _addRow() {
-    console.log('clicked');
     this.setState(prevState => {
       let ingredients = [...prevState.ingredients];
       ingredients.push({ amount: '', ingredient: '' });
       return { ingredients }
+    }, () => {
+
+      if (this.state.ingredients.length > 1) {
+        this.setState({ delRowVisible: 'flex' });
+      }
     });
   }
 
@@ -97,7 +101,7 @@ export default class IngredientsInput extends React.Component {
         <h3>Zutaten</h3>
         {rows}
         <div style={{ display: 'flex' }}>
-          <div style={styles.delRow}>-</div>
+          <div style={{ ...styles.delRow, ...{ display: this.state.delRowVisible } }} onClick={() => this._deleteRow()}>-</div>
           <div style={styles.addRow} onClick={() => this._addRow()}>+</div>
         </div>
       </div>

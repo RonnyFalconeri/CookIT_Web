@@ -18,7 +18,7 @@ const NewRecipePage = () => {
     duration: '',
     nationality: 'none',
     ingredients: [
-      { amount: 'b', ingredient: '2' }
+      { amount: '', ingredient: '' }
     ],
     preparation: '',
     author: '',
@@ -54,6 +54,7 @@ const NewRecipePage = () => {
   const _handleAuthorInput = (value) => {
     setRecipe({ ...recipe, author: value });
   }
+
 
   return (
     <DefaultContainerLayout>
