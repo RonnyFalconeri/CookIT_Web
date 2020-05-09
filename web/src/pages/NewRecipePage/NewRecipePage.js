@@ -1,4 +1,5 @@
 import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import TitleInput from 'src/components/TitleInput'
 
 const NewRecipePage = () => {
   return (
@@ -13,7 +14,7 @@ const NewRecipePage = () => {
         </div>
 
         <div style={styles.containerTitle}>
-          <input type="text" placeholder="Bezeichung" style={styles.titleInput} />
+          <TitleInput />
           <p>Dauer: <input type="number" style={styles.durationInput} /> Minutes</p>
           <p>Nationality:
           <select style={styles.nationalityInput}>
@@ -81,8 +82,9 @@ const styles = {
   },
   image: {
     height: 230,
-    border: '1px solid black',
-    borderRadius: 3
+    border: '10px solid white',
+    borderRadius: 3,
+    boxShadow: '0 1px 10px -3px grey'
   },
   changeImage: {
     width: 60,
@@ -96,7 +98,8 @@ const styles = {
     position: 'relative',
     bottom: 50,
     right: -360,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    boxShadow: '0 1px 10px -3px grey'
   },
   containerTitle: {
     display: 'flex',
