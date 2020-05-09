@@ -6,38 +6,124 @@ import ImageInput from 'src/components/ImageInput'
 import IngredientsInput from 'src/components/IngredientsInput'
 import PreparationInput from 'src/components/PreparationInput'
 import AuthorInput from 'src/components/AuthorInput'
+import { useState } from 'react'
+
 
 const NewRecipePage = () => {
+
+  // init recipe data
+  const [recipe, setRecipe] = useState({
+    image: null,
+    title: '',
+    duration: '',
+    nationality: 'none',
+    ingredients: [
+      { amount: 'b', ingredient: '2' }
+    ],
+    preparation: '',
+    author: '',
+    favorite: false
+  });
+
+
+  // handle input changes
+  const _handleImageInput = (value) => {
+    setRecipe({ ...recipe, image: value });
+  }
+
+  const _handleTitleInput = (value) => {
+    setRecipe({ ...recipe, title: value });
+  }
+
+  const _handleDurationInput = (value) => {
+    setRecipe({ ...recipe, duration: value });
+  }
+
+  const _handleNationalityInput = (value) => {
+    setRecipe({ ...recipe, nationality: value });
+  }
+
+  const _handleIngredientsInput = (value) => {
+    setRecipe({ ...recipe, ingredients: value });
+  }
+
+  const _handlePreparationInput = (value) => {
+    setRecipe({ ...recipe, preparation: value });
+  }
+
+  const _handleAuthorInput = (value) => {
+    setRecipe({ ...recipe, author: value });
+  }
+
   return (
     <DefaultContainerLayout>
 
       <div style={styles.row}>
 
-        <ImageInput />
+        <ImageInput
+          value={recipe.image}
+          onChange={value => _handleImageInput(value)}
+        />
 
         <div style={styles.containerTitle}>
-          <TitleInput />
-          <DurationInput />
-          <NationalityInput />
+
+          <TitleInput
+            value={recipe.title}
+            onChange={value => _handleTitleInput(value)}
+          />
+
+          <DurationInput
+            value={recipe.duration}
+            onChange={value => _handleDurationInput(value)}
+          />
+
+          <NationalityInput
+            value={recipe.nationality}
+            onChange={value => _handleNationalityInput(value)}
+          />
+
         </div>
 
       </div>
 
-      <div style={styles.separator}><hr /></div>
-
-      <div style={styles.row}>
-        <IngredientsInput />
-        <PreparationInput />
-      </div>
 
       <div style={styles.separator}><hr /></div>
 
+
       <div style={styles.row}>
-        <AuthorInput />
+
+        <IngredientsInput
+          ingredients={recipe.ingredients}
+          onChange={value => _handleIngredientsInput(value)}
+        />
+
+        <PreparationInput
+          value={recipe.preparation}
+          onChange={value => _handlePreparationInput(value)}
+        />
+
+      </div>
+
+
+      <div style={styles.separator}><hr /></div>
+
+
+      <div style={styles.row}>
+
+        <AuthorInput
+          value={recipe.author}
+          onChange={value => _handleAuthorInput(value)}
+        />
+
       </div>
 
       <div style={styles.row}>
-        <input type="button" value="Speichern" style={styles.saveButton} />
+        <input
+          type="button"
+          value="Speichern"
+          style={styles.saveButton}
+          onClick={() => console.log(recipe)}
+        />
       </div>
 
     </DefaultContainerLayout>

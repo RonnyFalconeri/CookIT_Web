@@ -3,7 +3,11 @@ export default class PreparationInput extends React.Component {
     return (
       <div style={styles.preparation}>
         <h3>Zubereitung</h3>
-        <textarea style={styles.preparationInput} />
+        <textarea
+          style={styles.preparationInput}
+          value={this.props.value}
+          onChange={event => this.props.onChange(event.target.value)}
+        />
       </div>
     )
   }

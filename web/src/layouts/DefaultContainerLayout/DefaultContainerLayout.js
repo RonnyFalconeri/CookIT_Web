@@ -33,7 +33,8 @@ const styles = {
     position: 'fixed',
     backgroundColor: 'white',
     top: 0,
-    boxShadow: '0 0 8px 0 grey'
+    boxShadow: '0 0 8px 0 grey',
+    zIndex: 9999
   },
   headerIcon: {
     height: 100

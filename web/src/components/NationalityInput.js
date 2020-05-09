@@ -2,7 +2,11 @@ export default class NationalityInput extends React.Component {
   render() {
     return (
       <p>Nationalität:
-        <select style={styles.nationalityInput}>
+        <select
+          style={styles.nationalityInput}
+          value={this.props.value}
+          onChange={event => this.props.onChange(event.target.value)}
+        >
           <option value="none">Keine</option>
           <option value="ger">Deutsch</option>
           <option value="ita">Italienisch</option>

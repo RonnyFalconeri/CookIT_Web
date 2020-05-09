@@ -1,7 +1,15 @@
 export default class DurationInput extends React.Component {
   render() {
     return (
-      <p>Dauer: <input type="number" style={styles.durationInput} /> Minuten</p>
+      <p>Dauer:
+        <input
+          type="number"
+          style={styles.durationInput}
+          min="1"
+          value={this.props.value}
+          onChange={event => this.props.onChange(event.target.value)}
+        />
+      Minuten</p>
     )
   }
 }
@@ -9,7 +17,7 @@ export default class DurationInput extends React.Component {
 const styles = {
   durationInput: {
     height: 40,
-    width: 50,
+    width: 60,
     padding: 5,
     borderRadius: 5,
     margin: 10
