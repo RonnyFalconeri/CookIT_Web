@@ -1,10 +1,10 @@
-import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import PageContainerLayout from 'src/layouts/PageContainerLayout'
 
 const SettingPage = () => {
   return (
-    <DefaultContainerLayout>
+    <PageContainerLayout title="Einstellungen">
       <h1>SettingPage</h1>
-    </DefaultContainerLayout>
+    </PageContainerLayout>
   )
 }
 

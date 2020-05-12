@@ -1,9 +1,9 @@
-import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import PageContainerLayout from 'src/layouts/PageContainerLayout'
 import RecipesListItem from 'src/components/RecipesListItem'
 
 const RecipesPage = () => {
   return (
-    <DefaultContainerLayout>
+    <PageContainerLayout title="Rezepte">
 
       <div style={styles.list}>
 
@@ -16,7 +16,7 @@ const RecipesPage = () => {
 
       </div>
 
-    </DefaultContainerLayout>
+    </PageContainerLayout>
   )
 }
 

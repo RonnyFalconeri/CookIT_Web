@@ -1,10 +1,10 @@
-import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import PageContainerLayout from 'src/layouts/PageContainerLayout'
 
 const RandomrecipePage = () => {
   return (
-    <DefaultContainerLayout>
+    <PageContainerLayout title="Zufälliges Rezept">
       <h1>RandomrecipePage</h1>
-    </DefaultContainerLayout>
+    </PageContainerLayout>
   )
 }
 

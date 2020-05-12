@@ -1,4 +1,4 @@
-import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import PageContainerLayout from 'src/layouts/PageContainerLayout'
 import TitleInput from 'src/components/TitleInput'
 import DurationInput from 'src/components/DurationInput'
 import NationalityInput from 'src/components/NationalityInput'
@@ -57,7 +57,7 @@ const NewRecipePage = () => {
 
 
   return (
-    <DefaultContainerLayout>
+    <PageContainerLayout title="Neues Rezept">
 
       <div style={styles.row}>
 
@@ -91,7 +91,7 @@ const NewRecipePage = () => {
       <div style={styles.separator}><hr /></div>
 
 
-      <div style={styles.row}>
+      <div style={{ ...styles.row, ...{ alignItems: 'flex-start' } }} >
 
         <IngredientsInput
           ingredients={recipe.ingredients}
@@ -127,7 +127,7 @@ const NewRecipePage = () => {
         />
       </div>
 
-    </DefaultContainerLayout>
+    </PageContainerLayout>
   )
 }
 
@@ -155,7 +155,6 @@ const styles = {
     borderRadius: 10,
     padding: 10,
     backgroundColor: '#93c47d',
-    border: '1px solid grey',
-    boxShadow: 'none'
+    boxShadow: '0 3px 10px 0px grey'
   }
 };

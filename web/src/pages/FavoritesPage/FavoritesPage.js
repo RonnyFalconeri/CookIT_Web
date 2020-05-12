@@ -1,9 +1,9 @@
-import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import PageContainerLayout from 'src/layouts/PageContainerLayout'
 import FavListItem from 'src/components/FavListItem'
 
 const FavoritePage = () => {
   return (
-    <DefaultContainerLayout>
+    <PageContainerLayout title="Favoriten">
 
       <div style={styles.list}>
 
@@ -15,7 +15,7 @@ const FavoritePage = () => {
 
       </div>
 
-    </DefaultContainerLayout>
+    </PageContainerLayout>
   )
 }
 
