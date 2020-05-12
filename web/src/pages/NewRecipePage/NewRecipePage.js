@@ -151,10 +151,13 @@ const styles = {
   },
   saveButton: {
     width: 170,
-    height: 40,
+    height: 50,
     borderRadius: 10,
-    padding: 10,
+    padding: 5,
     backgroundColor: '#93c47d',
-    boxShadow: '0 3px 10px 0px grey'
+    fontSize: 21,
+    fontWeight: 'bold',
+    color: 'white',
+    cursor: 'pointer'
   }
 };

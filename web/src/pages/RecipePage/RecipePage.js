@@ -1,4 +1,4 @@
-import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import PageContainerLayout from 'src/layouts/PageContainerLayout'
 import EditButton from 'src/components/EditButton'
 import { useState } from 'react'
 
@@ -34,7 +34,7 @@ const RecipePage = () => {
   });
 
   return (
-    <DefaultContainerLayout>
+    <PageContainerLayout title="Rezept">
 
       <div style={styles.row}>
         <img src="../../../public/images/recipeDefaultImage.png" style={styles.image} />
@@ -84,7 +84,7 @@ const RecipePage = () => {
         </div>
       </div>
 
-    </DefaultContainerLayout>
+    </PageContainerLayout>
   )
 }
 

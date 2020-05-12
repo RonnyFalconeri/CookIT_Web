@@ -28,12 +28,6 @@ const HomePage = () => {
           <h2 style={styles.listItemLabel}>Favoriten</h2>
         </div>
 
-      </div>
-
-
-      <div style={styles.row}>
-
-
         <div
           style={{ ...styles.listItem, ...{ backgroundColor: '#f6b26b' } }}
           onClick={() => navigate(routes.randomrecipe())}
@@ -43,12 +37,14 @@ const HomePage = () => {
 
         <div
           style={{ ...styles.listItem, ...{ backgroundColor: '#dd7e6b' } }}
-          onClick={() => navigate(routes.settings())}
+          onClick={() => navigate(routes.impressum())}
         >
-          <h2 style={styles.listItemLabel}>Einstellungen</h2>
+          <h2 style={styles.listItemLabel}>Impressum</h2>
         </div>
 
       </div>
+
+      <p style={{ textAlign: 'center' }}>&copy; Falconeri, Schindler</p>
 
     </DefaultContainerLayout>
   )
@@ -59,8 +55,8 @@ export default HomePage
 const styles = {
   listItem: {
     margin: 20,
-    height: 200,
-    width: 200,
+    height: '65vh',
+    width: 280,
     borderRadius: 20,
     display: 'flex',
     justifyContent: 'flex-end',

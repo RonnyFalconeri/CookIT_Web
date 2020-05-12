@@ -40,7 +40,7 @@ const styles = {
     height: 100
   },
   mainContent: {
-    width: '70%',
+    width: '95%',
     margin: '0 auto',
     paddingTop: 10
   }

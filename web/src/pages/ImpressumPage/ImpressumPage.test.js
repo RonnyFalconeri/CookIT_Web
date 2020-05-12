@@ -1,14 +1,14 @@
 import { render, cleanup } from '@testing-library/react'
 
-import SettingsPage from './SettingsPage'
+import ImpressumPage from './ImpressumPage'
 
-describe('SettingsPage', () => {
+describe('ImpressumPage', () => {
   afterEach(() => {
     cleanup()
   })
   it('renders successfully', () => {
     expect(() => {
-      render(<SettingsPage />)
+      render(<ImpressumPage />)
     }).not.toThrow()
   })
 })

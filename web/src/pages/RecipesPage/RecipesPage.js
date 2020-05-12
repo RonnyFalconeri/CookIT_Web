@@ -13,7 +13,6 @@ const RecipesPage = () => {
           nationality="ITA"
         />
 
-
       </div>
 
     </PageContainerLayout>
