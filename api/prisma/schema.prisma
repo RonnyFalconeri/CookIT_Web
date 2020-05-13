@@ -12,12 +12,13 @@ generator client {
 // migrations for them.
 model Recipe {
   // simple model for a recipe
-  recipeID    Int      @id
+  recipeID    Int      @default(autoincrement()) @unique
   title       String?
   duration    String?
   ingredients String?
   image       String?
   author      String?
+  preparation String?
   favorite    Boolean?
   created_at  String?
 }

@@ -2,6 +2,9 @@ import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
 import { useState } from 'react'
 // import NewRecipeCell from 'src/components/NewRecipeCell'
 
+import { Form, Submit, FormError, useMutation } from '@redwoodjs/web'
+import { useForm } from 'react-hook-form'
+
 import TitleInput from 'src/components/TitleInput'
 import DurationInput from 'src/components/DurationInput'
 import NationalityInput from 'src/components/NationalityInput'
@@ -10,7 +13,35 @@ import IngredientsInput from 'src/components/IngredientsInput'
 import PreparationInput from 'src/components/PreparationInput'
 import AuthorInput from 'src/components/AuthorInput'
 
+export const CREATE_RECIPE_MUTATION = gql`
+  mutation createRecipe($input: CreateRecipeInput!) {
+    createRecipe(input: $input) {
+      recipeID
+      title
+      duration
+      ingredients
+      preparation
+      image
+      author
+      favorite
+      created_at
+    }
+  }
+`
 const NewRecipePage = () => {
+  const formMethods = useForm()
+
+  const [create, { loading, error }] = useMutation(CREATE_RECIPE_MUTATION, {
+    onCompleted: () => {
+      alert('Thank you for your submission!')
+    },
+  })
+
+  const onSubmit = (data) => {
+    create({ variables: { input: data } })
+    console.log(data)
+  }
+
   // init recipe data
   const [recipe, setRecipe] = useState({
     image: null,
@@ -54,65 +85,78 @@ const NewRecipePage = () => {
 
   return (
     <DefaultContainerLayout>
-      <div style={styles.row}>
-        <ImageInput
-          value={recipe.image}
-          onChange={(value) => _handleImageInput(value)}
+      <Form
+        onSubmit={onSubmit}
+        validation={{ mode: 'onBlur' }}
+        error={error}
+        formMethods={formMethods}
+      >
+        <FormError
+          error={error}
+          wrapperStyle={{ color: 'red', backgroundColor: 'lavenderblush' }}
         />
-
-        <div style={styles.containerTitle}>
-          <TitleInput
-            value={recipe.title}
-            onChange={(value) => _handleTitleInput(value)}
+        <div style={styles.row}>
+          <ImageInput
+            value={recipe.image}
+            onChange={(value) => _handleImageInput(value)}
           />
 
-          <DurationInput
-            value={recipe.duration}
-            onChange={(value) => _handleDurationInput(value)}
+          <div style={styles.containerTitle}>
+            <TitleInput
+              value={recipe.title}
+              onChange={(value) => _handleTitleInput(value)}
+            />
+
+            <DurationInput
+              value={recipe.duration}
+              onChange={(value) => _handleDurationInput(value)}
+            />
+
+            <NationalityInput
+              value={recipe.nationality}
+              onChange={(value) => _handleNationalityInput(value)}
+            />
+          </div>
+        </div>
+
+        <div style={styles.separator}>
+          <hr />
+        </div>
+
+        <div style={styles.row}>
+          <IngredientsInput
+            ingredients={recipe.ingredients}
+            onChange={(value) => _handleIngredientsInput(value)}
           />
 
-          <NationalityInput
-            value={recipe.nationality}
-            onChange={(value) => _handleNationalityInput(value)}
+          <PreparationInput
+            value={recipe.preparation}
+            onChange={(value) => _handlePreparationInput(value)}
           />
         </div>
-      </div>
 
-      <div style={styles.separator}>
-        <hr />
-      </div>
+        <div style={styles.separator}>
+          <hr />
+        </div>
 
-      <div style={styles.row}>
-        <IngredientsInput
-          ingredients={recipe.ingredients}
-          onChange={(value) => _handleIngredientsInput(value)}
-        />
+        <div style={styles.row}>
+          <AuthorInput
+            value={recipe.author}
+            onChange={(value) => _handleAuthorInput(value)}
+          />
+        </div>
 
-        <PreparationInput
-          value={recipe.preparation}
-          onChange={(value) => _handlePreparationInput(value)}
-        />
-      </div>
-
-      <div style={styles.separator}>
-        <hr />
-      </div>
-
-      <div style={styles.row}>
-        <AuthorInput
-          value={recipe.author}
-          onChange={(value) => _handleAuthorInput(value)}
-        />
-      </div>
-
-      <div style={styles.row}>
-        <input
-          type="button"
-          value="Speichern"
-          style={styles.saveButton}
-          onClick={() => console.log(recipe)}
-        />
-      </div>
+        <Submit>
+          <div style={styles.row}>
+            <input
+              type="button"
+              value="Speichern"
+              style={styles.saveButton}
+              onClick={() => console.log(recipe)}
+            />
+          </div>
+        </Submit>
+      </Form>
     </DefaultContainerLayout>
   )
 }
