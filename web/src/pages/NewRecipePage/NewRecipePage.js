@@ -1,8 +1,16 @@
 import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
 import { useState } from 'react'
 // import NewRecipeCell from 'src/components/NewRecipeCell'
-
-import { Form, Submit, FormError, useMutation } from '@redwoodjs/web'
+import {
+  Form,
+  TextField,
+  TextAreaField,
+  Submit,
+  FieldError,
+  Label,
+  FormError,
+  useMutation,
+} from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
 
 import TitleInput from 'src/components/TitleInput'
@@ -16,7 +24,7 @@ import AuthorInput from 'src/components/AuthorInput'
 export const CREATE_RECIPE_MUTATION = gql`
   mutation createRecipe($input: CreateRecipeInput!) {
     createRecipe(input: $input) {
-      recipeID
+      id
       title
       duration
       ingredients
@@ -34,6 +42,7 @@ const NewRecipePage = () => {
   const [create, { loading, error }] = useMutation(CREATE_RECIPE_MUTATION, {
     onCompleted: () => {
       alert('Thank you for your submission!')
+      formMethods.reset()
     },
   })
 
@@ -100,7 +109,6 @@ const NewRecipePage = () => {
             value={recipe.image}
             onChange={(value) => _handleImageInput(value)}
           />
-
           <div style={styles.containerTitle}>
             <TitleInput
               value={recipe.title}
