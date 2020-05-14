@@ -1,6 +1,6 @@
 datasource DS {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = "postgresql://postgres:raspberry@192.168.0.71/cookit"
 }
 
 generator client {
@@ -10,9 +10,15 @@ generator client {
 
 // Define your own datamodels here and run `yarn redwood db save` to create
 // migrations for them.
-// TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Recipe {
+  // simple model for a recipe
+  id          Int       @default(autoincrement()) @id
+  title       String?
+  duration    String?
+  ingredients String?
+  image       String?
+  author      String?
+  preparation String?
+  favorite    Boolean?
+  created_at  DateTime? @default(now())
 }
