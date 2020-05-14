@@ -24,7 +24,6 @@ import AuthorInput from 'src/components/AuthorInput'
 export const CREATE_RECIPE_MUTATION = gql`
   mutation createRecipe($input: CreateRecipeInput!) {
     createRecipe(input: $input) {
-      id
       title
       duration
       ingredients
@@ -32,7 +31,6 @@ export const CREATE_RECIPE_MUTATION = gql`
       image
       author
       favorite
-      created_at
     }
   }
 `
@@ -46,9 +44,23 @@ const NewRecipePage = () => {
     },
   })
 
-  const onSubmit = (data) => {
-    create({ variables: { input: data } })
-    console.log(data)
+  const onSubmit = () => {
+    create({
+      variables: {
+        input: {
+          title: recipe.title,
+          duration: recipe.duration,
+          ingredients: JSON.stringify(recipe.ingredients),
+          preparation: recipe.preparation,
+          image: recipe.image,
+          author: recipe.author,
+          favorite: recipe.favorite,
+        },
+      },
+    })
+    console.log(recipe.title)
+    console.log(recipe.favorite)
+    console.log(recipe.preparation)
   }
 
   // init recipe data
