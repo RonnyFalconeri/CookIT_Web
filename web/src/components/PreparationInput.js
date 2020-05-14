@@ -17,13 +17,16 @@ const styles = {
   preparation: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'white',
+    width: 600,
+    borderRadius: 10,
+    padding: 15,
+    boxShadow: '0 1px 10px -3px grey'
   },
   preparationInput: {
     width: 600,
     height: 100,
-    borderRadius: 5,
     border: 'none',
-    boxShadow: '0 1px 10px -3px grey'
   }
 };

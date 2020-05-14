@@ -1,14 +1,14 @@
 import { render, cleanup } from '@testing-library/react'
 
-import SettingsPage from './SettingsPage'
+import PageContainerLayout from './PageContainerLayout'
 
-describe('SettingsPage', () => {
+describe('PageContainerLayout', () => {
   afterEach(() => {
     cleanup()
   })
   it('renders successfully', () => {
     expect(() => {
-      render(<SettingsPage />)
+      render(<PageContainerLayout />)
     }).not.toThrow()
   })
 })

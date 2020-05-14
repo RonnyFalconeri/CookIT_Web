@@ -1,3 +1,4 @@
+
 import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
 import { useState } from 'react'
 // import NewRecipeCell from 'src/components/NewRecipeCell'
@@ -12,7 +13,7 @@ import {
   useMutation,
 } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
-
+import PageContainerLayout from 'src/layouts/PageContainerLayout'
 import TitleInput from 'src/components/TitleInput'
 import DurationInput from 'src/components/DurationInput'
 import NationalityInput from 'src/components/NationalityInput'
@@ -105,6 +106,7 @@ const NewRecipePage = () => {
   }
 
   return (
+
     <DefaultContainerLayout>
       <Form
         onSubmit={onSubmit}
@@ -115,6 +117,14 @@ const NewRecipePage = () => {
         <FormError
           error={error}
           wrapperStyle={{ color: 'red', backgroundColor: 'lavenderblush' }}
+
+    <PageContainerLayout title="Neues Rezept">
+
+      <div style={styles.row}>
+
+        <ImageInput
+          value={recipe.image}
+          onChange={value => _handleImageInput(value)}
         />
         <div style={styles.row}>
           <ImageInput
@@ -158,14 +168,44 @@ const NewRecipePage = () => {
         <div style={styles.separator}>
           <hr />
         </div>
+      </div>
 
+
+      <div style={styles.separator}><hr /></div>
+
+
+      <div style={{ ...styles.row, ...{ alignItems: 'flex-start' } }} >
+
+        <IngredientsInput
+          ingredients={recipe.ingredients}
+          onChange={value => _handleIngredientsInput(value)}
+        />
+
+        <PreparationInput
+          value={recipe.preparation}
+          onChange={value => _handlePreparationInput(value)}
+        />
+
+      </div>
+
+
+      <div style={styles.separator}><hr /></div>
+
+
+      <div style={styles.row}>
+
+        <AuthorInput
+          value={recipe.author}
+          onChange={value => _handleAuthorInput(value)}
+        />
+
+      </div>
         <div style={styles.row}>
           <AuthorInput
             value={recipe.author}
             onChange={(value) => _handleAuthorInput(value)}
           />
         </div>
-
         <Submit>
           <div style={styles.row}>
             <input
@@ -178,6 +218,7 @@ const NewRecipePage = () => {
         </Submit>
       </Form>
     </DefaultContainerLayout>
+    </PageContainerLayout>
   )
 }
 
@@ -201,11 +242,20 @@ const styles = {
   },
   saveButton: {
     width: 170,
-    height: 40,
+    height: 50,
     borderRadius: 10,
-    padding: 10,
+    padding: 5,
     backgroundColor: '#93c47d',
+
     border: '1px solid grey',
     boxShadow: 'none',
   },
 }
+
+    fontSize: 21,
+    fontWeight: 'bold',
+    color: 'white',
+    cursor: 'pointer'
+  }
+};
+

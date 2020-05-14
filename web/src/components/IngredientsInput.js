@@ -124,11 +124,13 @@ const styles = {
     margin: 5
   },
   ingredientsInput: {
-    width: 75,
     height: 30,
-    padding: 5,
+    width: 75,
+    padding: 3,
     margin: 5,
-    borderRadius: 5
+    border: 'none',
+    backgroundColor: 'transparent',
+    borderBottom: '1px solid black'
   },
   delRow: {
     height: 20,

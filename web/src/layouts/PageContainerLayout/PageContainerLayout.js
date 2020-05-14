@@ -1,12 +1,16 @@
 import { Link, routes } from '@redwoodjs/router'
 import '../../../public/css/styling.css';
 
-const DefaultContainerLayout = ({ children }) => {
+const PageContainerLayout = ({ children, title }) => {
   return (
     <div style={styles.container}>
 
       <div style={styles.header}>
-        <h1>CookIT! Web Edition</h1>
+        <Link to={routes.home()}>
+          <img src="../../../public/images/backButton.png" style={{ width: 40, position: 'relative', left: -200 }} />
+        </Link>
+
+        <h1>{title}</h1>
         <Link to={routes.home()}>
           <img src="../../../public/images/icon.png" style={styles.headerIcon} />
         </Link>
@@ -17,6 +21,8 @@ const DefaultContainerLayout = ({ children }) => {
     </div>
   )
 }
+
+export default PageContainerLayout
 
 const styles = {
   container: {
@@ -40,10 +46,9 @@ const styles = {
     height: 100
   },
   mainContent: {
-    width: '95%',
+    width: '70%',
     margin: '0 auto',
     paddingTop: 10
   }
 };
 
-export default DefaultContainerLayout

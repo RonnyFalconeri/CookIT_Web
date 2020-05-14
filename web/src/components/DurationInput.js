@@ -16,10 +16,12 @@ export default class DurationInput extends React.Component {
 
 const styles = {
   durationInput: {
-    height: 40,
+    height: 30,
     width: 60,
-    padding: 5,
-    borderRadius: 5,
-    margin: 10
+    padding: 3,
+    margin: 10,
+    border: 'none',
+    backgroundColor: 'transparent',
+    borderBottom: '1px solid black'
   }
 };

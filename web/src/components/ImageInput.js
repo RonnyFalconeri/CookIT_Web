@@ -19,7 +19,7 @@ export default class ImageInput extends React.Component {
     }
 
     return (
-      <div>
+      <div style={{ height: 240 }}>
         {image}
 
         <label htmlFor="imageInput" style={styles.changeImage}>
@@ -59,12 +59,12 @@ const styles = {
     borderRadius: 60,
     backgroundColor: '#93c47d',
     padding: 5,
-    display: 'flex',
     justifyContent: 'center',
+    display: 'flex',
     alignItems: 'center',
     position: 'relative',
     bottom: 50,
-    right: -360,
+    right: -350,
     cursor: 'pointer',
     boxShadow: '0 1px 10px -3px grey'
   }

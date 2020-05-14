@@ -1,5 +1,6 @@
 import { routes, navigate } from '@redwoodjs/router'
 import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import HomeListItem from 'src/components/HomeListItem'
 
 const HomePage = () => {
   return (
@@ -7,48 +8,40 @@ const HomePage = () => {
 
       <div style={styles.row}>
 
-        <div
-          style={{ ...styles.listItem, ...{ backgroundColor: '#6d9eeb' } }}
+        <HomeListItem
+          title="Rezepte"
+          color="#6d9eeb"
           onClick={() => navigate(routes.recipes())}
-        >
-          <h2 style={styles.listItemLabel}>Rezepte</h2>
-        </div>
+        />
 
-        <div
-          style={{ ...styles.listItem, ...{ backgroundColor: '#93c47d' } }}
+        <HomeListItem
+          title="Neues Rezept"
+          color="#93c47d"
           onClick={() => navigate(routes.newRecipe())}
-        >
-          <h2 style={styles.listItemLabel}>Neues Rezept</h2>
-        </div>
+        />
 
-        <div
-          style={{ ...styles.listItem, ...{ backgroundColor: '#8e7cc3' } }}
+        <HomeListItem
+          title="Favoriten"
+          color="#8e7cc3"
           onClick={() => navigate(routes.favorites())}
-        >
-          <h2 style={styles.listItemLabel}>Favoriten</h2>
-        </div>
+        />
 
-      </div>
-
-
-      <div style={styles.row}>
-
-
-        <div
-          style={{ ...styles.listItem, ...{ backgroundColor: '#f6b26b' } }}
+        <HomeListItem
+          title="Zufällig"
+          color="#f6b26b"
           onClick={() => navigate(routes.randomrecipe())}
-        >
-          <h2 style={styles.listItemLabel}>Zufällig</h2>
-        </div>
+        />
 
-        <div
-          style={{ ...styles.listItem, ...{ backgroundColor: '#dd7e6b' } }}
-          onClick={() => navigate(routes.settings())}
-        >
-          <h2 style={styles.listItemLabel}>Einstellungen</h2>
-        </div>
+        <HomeListItem
+          title="Impressum"
+          color="#dd7e6b"
+          onClick={() => navigate(routes.impressum())}
+        />
+
 
       </div>
+
+      <p style={{ textAlign: 'center' }}>&copy; Falconeri, Schindler</p>
 
     </DefaultContainerLayout>
   )
@@ -57,21 +50,6 @@ const HomePage = () => {
 export default HomePage
 
 const styles = {
-  listItem: {
-    margin: 20,
-    height: 200,
-    width: 200,
-    borderRadius: 20,
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    padding: 10,
-    cursor: 'pointer',
-    boxShadow: '0 4px 4px 0 grey'
-  },
-  listItemLabel: {
-    color: 'white'
-  },
   row: {
     display: 'flex',
     flexDirection: 'row',

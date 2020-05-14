@@ -1,15 +1,57 @@
-import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
+import PageContainerLayout from 'src/layouts/PageContainerLayout'
+import EditButton from 'src/components/EditButton'
+import { useState } from 'react'
 
 const RecipePage = () => {
+
+  // init recipe data
+  const [recipe, setRecipe] = useState({
+    image: null,
+    title: 'Spaghetti Bolognese',
+    duration: '14',
+    nationality: 'none',
+    ingredients: [
+      { amount: '100g', ingredient: 'Spaghetti' },
+      { amount: '2', ingredient: 'Zwiebeln' },
+      { amount: '5', ingredient: 'Tomaten' },
+      { amount: '1', ingredient: 'Knoblauch' },
+    ],
+    preparation: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+    author: 'Ronny Falconeri',
+    favorite: false,
+    createdAt: '15:32 Uhr, 8. Mai 2020'
+  });
+
+
+  // generate ingredient rows
+  let ingredientRows = recipe.ingredients.map((row, i) => {
+    return (
+      <div key={i} style={{ display: 'flex', justifyContent: 'center' }}>
+        <span style={{ textAlign: 'right', margin: 5, width: 50, fontWeight: 'bold' }}>{row.amount}</span>
+        <span style={{ textAlign: 'left', margin: 5, width: 80 }}>{row.ingredient}</span>
+      </div>
+    );
+  });
+
   return (
-    <DefaultContainerLayout>
+    <PageContainerLayout title="Rezept">
 
       <div style={styles.row}>
         <img src="../../../public/images/recipeDefaultImage.png" style={styles.image} />
 
         <div style={styles.containerTitle}>
-          <h1 style={styles.title}>Spaghetti bolognese</h1>
-          <div>14 Min | ITA</div>
+
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <h1 style={styles.title}>{recipe.title}</h1>
+            <EditButton />
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', width: 200 }}>
+            <span>{recipe.duration} Min</span>
+            <span style={{ fontStyle: 'bold', fontSize: 20 }}> | </span>
+            <span>{recipe.nationality}</span>
+          </div>
+
         </div>
       </div>
 
@@ -20,19 +62,14 @@ const RecipePage = () => {
       <div style={styles.row}>
         <div style={styles.ingredients}>
           <h3>Zutaten</h3>
-          <div style={{ margin: 10 }}>
-            <p>100g Spaghetti</p>
-            <p>2 Zwiebeln</p>
-            <p>5 Tomaten</p>
-            <p>1 Knoblauch</p>
-          </div>
+          {ingredientRows}
         </div>
 
         <div style={styles.preparation}>
           <h3>Zubereitung</h3>
           <p style={{ margin: 10 }}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </p>
+            {recipe.preparation}
+          </p>
         </div>
       </div>
 
@@ -42,12 +79,12 @@ const RecipePage = () => {
 
       <div style={styles.row}>
         <div style={styles.containerAuthor}>
-          <p style={{ margin: 5 }}>Autor: <span style={{ fontStyle: 'italic' }}>Ronny Falconeri</span></p>
-          <p style={{ margin: 5 }}>Datum: <span style={{ fontStyle: 'italic' }}>15:32 Uhr, 8. Mai 2020</span></p>
+          <p style={{ margin: 5 }}>Autor: <span style={{ fontStyle: 'italic' }}>{recipe.author}</span></p>
+          <p style={{ margin: 5 }}>Datum: <span style={{ fontStyle: 'italic' }}>{recipe.createdAt}</span></p>
         </div>
       </div>
 
-    </DefaultContainerLayout>
+    </PageContainerLayout>
   )
 }
 
@@ -66,6 +103,7 @@ const styles = {
     borderRadius: 3
   },
   containerTitle: {
+    width: 600,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'

@@ -16,10 +16,12 @@ export default class AuthorInput extends React.Component {
 
 const styles = {
   authorInput: {
-    height: 40,
+    height: 30,
     width: 200,
-    padding: 5,
-    borderRadius: 5,
-    margin: 10
+    padding: 3,
+    margin: 10,
+    border: 'none',
+    backgroundColor: 'transparent',
+    borderBottom: '1px solid black'
   }
 };
