@@ -1,19 +1,9 @@
-
-import DefaultContainerLayout from 'src/layouts/DefaultContainerLayout'
 import { useState } from 'react'
 // import NewRecipeCell from 'src/components/NewRecipeCell'
-import {
-  Form,
-  TextField,
-  TextAreaField,
-  Submit,
-  FieldError,
-  Label,
-  FormError,
-  useMutation,
-} from '@redwoodjs/web'
+import { Form, Submit, FormError, useMutation } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
 import PageContainerLayout from 'src/layouts/PageContainerLayout'
+
 import TitleInput from 'src/components/TitleInput'
 import DurationInput from 'src/components/DurationInput'
 import NationalityInput from 'src/components/NationalityInput'
@@ -106,7 +96,6 @@ const NewRecipePage = () => {
   }
 
   return (
-
     <PageContainerLayout title="Neues Rezept">
       <Form
         onSubmit={onSubmit}
@@ -119,64 +108,55 @@ const NewRecipePage = () => {
           wrapperStyle={{ color: 'red', backgroundColor: 'lavenderblush' }}
         />
 
-
         <div style={styles.row}>
-
           <ImageInput
             value={recipe.image}
-            onChange={value => _handleImageInput(value)}
+            onChange={(value) => _handleImageInput(value)}
           />
 
           <div style={styles.containerTitle}>
-
             <TitleInput
               value={recipe.title}
-              onChange={value => _handleTitleInput(value)}
+              onChange={(value) => _handleTitleInput(value)}
             />
 
             <DurationInput
               value={recipe.duration}
-              onChange={value => _handleDurationInput(value)}
+              onChange={(value) => _handleDurationInput(value)}
             />
 
             <NationalityInput
               value={recipe.nationality}
-              onChange={value => _handleNationalityInput(value)}
+              onChange={(value) => _handleNationalityInput(value)}
             />
-
           </div>
-
         </div>
 
+        <div style={styles.separator}>
+          <hr />
+        </div>
 
-        <div style={styles.separator}><hr /></div>
-
-
-        <div style={{ ...styles.row, ...{ alignItems: 'flex-start' } }} >
-
+        <div style={{ ...styles.row, ...{ alignItems: 'flex-start' } }}>
           <IngredientsInput
             ingredients={recipe.ingredients}
-            onChange={value => _handleIngredientsInput(value)}
+            onChange={(value) => _handleIngredientsInput(value)}
           />
 
           <PreparationInput
             value={recipe.preparation}
-            onChange={value => _handlePreparationInput(value)}
+            onChange={(value) => _handlePreparationInput(value)}
           />
-
         </div>
 
-
-        <div style={styles.separator}><hr /></div>
-
+        <div style={styles.separator}>
+          <hr />
+        </div>
 
         <div style={styles.row}>
-
           <AuthorInput
             value={recipe.author}
-            onChange={value => _handleAuthorInput(value)}
+            onChange={(value) => _handleAuthorInput(value)}
           />
-
         </div>
 
         <div style={styles.row}>
@@ -189,9 +169,7 @@ const NewRecipePage = () => {
             />
           </Submit>
         </div>
-
       </Form>
-
     </PageContainerLayout>
   )
 }
@@ -225,7 +203,6 @@ const styles = {
     fontSize: 21,
     fontWeight: 'bold',
     color: 'white',
-    cursor: 'pointer'
-  }
-};
-
+    cursor: 'pointer',
+  },
+}
