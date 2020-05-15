@@ -107,7 +107,7 @@ const NewRecipePage = () => {
 
   return (
 
-    <DefaultContainerLayout>
+    <PageContainerLayout title="Neues Rezept">
       <Form
         onSubmit={onSubmit}
         validation={{ mode: 'onBlur' }}
@@ -117,107 +117,81 @@ const NewRecipePage = () => {
         <FormError
           error={error}
           wrapperStyle={{ color: 'red', backgroundColor: 'lavenderblush' }}
-
-    <PageContainerLayout title="Neues Rezept">
-
-      <div style={styles.row}>
-
-        <ImageInput
-          value={recipe.image}
-          onChange={value => _handleImageInput(value)}
         />
+
+
         <div style={styles.row}>
+
           <ImageInput
             value={recipe.image}
-            onChange={(value) => _handleImageInput(value)}
+            onChange={value => _handleImageInput(value)}
           />
+
           <div style={styles.containerTitle}>
+
             <TitleInput
               value={recipe.title}
-              onChange={(value) => _handleTitleInput(value)}
+              onChange={value => _handleTitleInput(value)}
             />
 
             <DurationInput
               value={recipe.duration}
-              onChange={(value) => _handleDurationInput(value)}
+              onChange={value => _handleDurationInput(value)}
             />
 
             <NationalityInput
               value={recipe.nationality}
-              onChange={(value) => _handleNationalityInput(value)}
+              onChange={value => _handleNationalityInput(value)}
             />
+
           </div>
+
         </div>
 
-        <div style={styles.separator}>
-          <hr />
-        </div>
 
-        <div style={styles.row}>
+        <div style={styles.separator}><hr /></div>
+
+
+        <div style={{ ...styles.row, ...{ alignItems: 'flex-start' } }} >
+
           <IngredientsInput
             ingredients={recipe.ingredients}
-            onChange={(value) => _handleIngredientsInput(value)}
+            onChange={value => _handleIngredientsInput(value)}
           />
 
           <PreparationInput
             value={recipe.preparation}
-            onChange={(value) => _handlePreparationInput(value)}
+            onChange={value => _handlePreparationInput(value)}
           />
+
         </div>
 
-        <div style={styles.separator}>
-          <hr />
-        </div>
-      </div>
+
+        <div style={styles.separator}><hr /></div>
 
 
-      <div style={styles.separator}><hr /></div>
-
-
-      <div style={{ ...styles.row, ...{ alignItems: 'flex-start' } }} >
-
-        <IngredientsInput
-          ingredients={recipe.ingredients}
-          onChange={value => _handleIngredientsInput(value)}
-        />
-
-        <PreparationInput
-          value={recipe.preparation}
-          onChange={value => _handlePreparationInput(value)}
-        />
-
-      </div>
-
-
-      <div style={styles.separator}><hr /></div>
-
-
-      <div style={styles.row}>
-
-        <AuthorInput
-          value={recipe.author}
-          onChange={value => _handleAuthorInput(value)}
-        />
-
-      </div>
         <div style={styles.row}>
+
           <AuthorInput
             value={recipe.author}
-            onChange={(value) => _handleAuthorInput(value)}
+            onChange={value => _handleAuthorInput(value)}
           />
+
         </div>
-        <Submit>
-          <div style={styles.row}>
+
+        <div style={styles.row}>
+          <Submit>
             <input
               type="button"
               value="Speichern"
               style={styles.saveButton}
               onClick={() => console.log(recipe)}
             />
-          </div>
-        </Submit>
+          </Submit>
+        </div>
+
       </Form>
-    </DefaultContainerLayout>
+
     </PageContainerLayout>
   )
 }
@@ -246,12 +220,8 @@ const styles = {
     borderRadius: 10,
     padding: 5,
     backgroundColor: '#93c47d',
-
     border: '1px solid grey',
     boxShadow: 'none',
-  },
-}
-
     fontSize: 21,
     fontWeight: 'bold',
     color: 'white',
