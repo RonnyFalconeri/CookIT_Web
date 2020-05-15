@@ -3,6 +3,7 @@ export const schema = gql`
     id: Int!
     title: String
     duration: String
+    nationality: String
     ingredients: String
     image: String
     author: String
@@ -23,6 +24,7 @@ export const schema = gql`
   input CreateRecipeInput {
     title: String
     duration: String
+    nationality: String
     ingredients: String
     image: String
     author: String
@@ -33,6 +35,7 @@ export const schema = gql`
   input UpdateRecipeInput {
     title: String
     duration: String
+    nationality: String
     ingredients: String
     image: String
     author: String
