@@ -1,6 +1,6 @@
 datasource DS {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = "postgresql://postgres:raspberry@192.168.0.71/cookit"
 }
 
 generator client {
