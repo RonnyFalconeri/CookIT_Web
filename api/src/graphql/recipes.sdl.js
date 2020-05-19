@@ -14,6 +14,7 @@ export const schema = gql`
 
   type Query {
     recipes: [Recipe!]!
+    recipe(id: Int!): Recipe!
   }
 
   input IngredientInput {

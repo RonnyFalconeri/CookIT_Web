@@ -49,9 +49,6 @@ const NewRecipePage = () => {
         },
       },
     })
-    console.log(recipe.title)
-    console.log(recipe.favorite)
-    console.log(recipe.preparation)
   }
 
   // init recipe data
