@@ -35,7 +35,7 @@ export const Success = ({ recipes }) => {
         key={recipe.id}
         title={recipe.title}
         duration={recipe.duration}
-        nationality={recipe.preparation}
+        nationality={recipe.nationality}
       />
     </div>
   ))
