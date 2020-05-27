@@ -4,6 +4,7 @@ export const QUERY = gql`
       id
       title
       duration
+      nationality
       ingredients
       preparation
       image

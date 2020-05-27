@@ -17,6 +17,7 @@ export const CREATE_RECIPE_MUTATION = gql`
     createRecipe(input: $input) {
       title
       duration
+      nationality
       ingredients
       preparation
       image
@@ -41,6 +42,7 @@ const NewRecipePage = () => {
         input: {
           title: recipe.title,
           duration: recipe.duration,
+          nationality: recipe.nationality,
           ingredients: JSON.stringify(recipe.ingredients),
           preparation: recipe.preparation,
           image: recipe.image,
