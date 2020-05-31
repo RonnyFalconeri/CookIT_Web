@@ -55,7 +55,7 @@ export const Success = ({ recipe }) => {
         >
           {row.amount}
         </span>
-        <span style={{ textAlign: 'left', margin: 5, width: 80 }}>
+        <span style={{ textAlign: 'left', margin: 5, width: 100 }}>
           {row.ingredient}
         </span>
       </div>
