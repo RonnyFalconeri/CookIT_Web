@@ -203,5 +203,5 @@ const styles = {
     fontWeight: 'bold',
     color: 'white',
     cursor: 'pointer',
-  },
+  }
 }

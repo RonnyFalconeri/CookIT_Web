@@ -40,8 +40,6 @@ export const Success = ({ recipe }) => {
     createdAt: recipe.created_at,
   })
 
-  console.log(Recipe)
-
   // generate ingredient rows
   let ingredientRows = Recipe.ingredients.map((row, i) => {
     return (
@@ -79,7 +77,7 @@ export const Success = ({ recipe }) => {
         <div style={styles.containerTitle}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <h1 style={styles.title}>{Recipe.title}</h1>
-            <EditButton />
+            <EditButton data={Recipe} />
           </div>
 
           <div
