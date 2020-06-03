@@ -1,13 +1,22 @@
 // import { routes, navigate } from '@redwoodjs/router'
 
+import FavoritesIcon from "./FavoritesIcon";
+
 export default class RecipesListItem extends React.Component {
   render() {
     return (
       <div style={styles.listItem}>
-        <img
-          src="../../../public/images/recipeDefaultImage.png"
-          style={styles.image}
-        />
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <img
+            src="../../../public/images/recipeDefaultImage.png"
+            style={styles.image}
+          />
+
+          <FavoritesIcon
+            favorite={this.props.favorite}
+          />
+        </div>
+
         <h2 style={styles.title}>{this.props.title}</h2>
 
         <div style={styles.durationColumn}>
@@ -27,9 +36,11 @@ const styles = {
     borderRadius: 20,
     backgroundColor: '#6d9eeb',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
+    paddingLeft: 20,
+    paddingRight: 40,
     cursor: 'pointer',
     boxShadow: '0 4px 4px 0 grey',
   },
@@ -56,5 +67,5 @@ const styles = {
   nationality: {
     color: 'white',
     margin: 5,
-  },
+  }
 }

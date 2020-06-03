@@ -36,6 +36,7 @@ export const Success = ({ recipes }) => {
         title={recipe.title}
         duration={recipe.duration}
         nationality={recipe.nationality}
+        favorite={recipe.favorite}
       />
     </div>
   ))
