@@ -2,6 +2,7 @@ import PageContainerLayout from 'src/layouts/PageContainerLayout'
 import { useState } from 'react'
 
 import EditButton from 'src/components/EditButton'
+import Add2Favorites from '../Add2Favorites'
 
 export const QUERY = gql`
   query($id: Int!) {
@@ -68,6 +69,10 @@ export const Success = ({ recipe }) => {
         <img
           src="../../../public/images/recipeDefaultImage.png"
           style={styles.image}
+        />
+
+        <Add2Favorites
+          favorite={Recipe.favorite}
         />
 
         <div style={styles.containerTitle}>
