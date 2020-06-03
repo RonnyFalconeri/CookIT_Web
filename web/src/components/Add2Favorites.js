@@ -22,7 +22,7 @@ export default class Add2Favorites extends React.Component {
     return (
       <div
         style={styles.container}
-        onClick={() => this._add2Favorites()}
+        onClick={this.props.onClick}
       >
         {favIcon}
       </div>

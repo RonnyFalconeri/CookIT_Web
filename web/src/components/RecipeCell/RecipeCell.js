@@ -73,6 +73,7 @@ export const Success = ({ recipe }) => {
 
         <Add2Favorites
           favorite={Recipe.favorite}
+          onClick={() => this._handleFavoriteInput()}
         />
 
         <div style={styles.containerTitle}>
