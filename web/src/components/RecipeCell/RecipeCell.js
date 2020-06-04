@@ -1,7 +1,9 @@
 import PageContainerLayout from 'src/layouts/PageContainerLayout'
 import { useState } from 'react'
+import { useMutation } from '@redwoodjs/web'
 
 import EditButton from 'src/components/EditButton'
+
 import Add2Favorites from '../Add2Favorites'
 
 export const QUERY = gql`
@@ -20,6 +22,14 @@ export const QUERY = gql`
     }
   }
 `
+export const UPDATE_FAVORITE_MUTATION = gql`
+  mutation updateRecipe($id: Int!, $input: UpdateRecipeInput!) {
+    updateRecipe(id: $id, input: $input) {
+      favorite
+    }
+  }
+`
+
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
@@ -61,6 +71,21 @@ export const Success = ({ recipe }) => {
     )
   })
 
+  const [create] = useMutation(UPDATE_FAVORITE_MUTATION)
+
+  const changeFavoriteCallback = (favBool) => {
+    setRecipe({ ...Recipe, favorite: favBool })
+
+    create({
+      variables: {
+        id: recipe.id,
+        input: {
+          favorite: favBool,
+        },
+      },
+    })
+  }
+
   return (
     <PageContainerLayout title="Rezept">
       <div style={styles.row}>
@@ -71,7 +96,7 @@ export const Success = ({ recipe }) => {
 
         <Add2Favorites
           favorite={Recipe.favorite}
-          onClick={() => this._handleFavoriteInput()}
+          callback={changeFavoriteCallback}
         />
 
         <div style={styles.containerTitle}>
