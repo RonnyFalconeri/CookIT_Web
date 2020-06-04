@@ -78,7 +78,7 @@ export const Success = ({ recipe }) => {
 
     create({
       variables: {
-        id: 1,
+        id: recipe.id,
         input: {
           favorite: favBool,
         },
