@@ -8,11 +8,23 @@ export default class NationalityInput extends React.Component {
           onChange={event => this.props.onChange(event.target.value)}
         >
           <option value="none">Keine</option>
-          <option value="ger">Deutsch</option>
-          <option value="ita">Italienisch</option>
-          <option value="gre">Griechisch</option>
-          <option value="chi">Chinesisch</option>
-          <option value="tur">Türkisch</option>
+          <option value="ITA">Italienisch</option>
+          <option value="TUR">Türkisch</option>
+          <option value="FRA">Französisch</option>
+          <option value="GER">Deutsch</option>
+          <option value="GRE">Griechisch</option>
+          <option value="CHI">Chinesisch</option>
+          <option value="THA">Thailändisch</option>
+          <option value="VNM">Vietnamesisch</option>
+          <option value="ESP">Spanisch</option>
+          <option value="AFR">Afrikanisch</option>
+          <option value="GBR">Britisch</option>
+          <option value="ARG">Argentinisch</option>
+          <option value="CHE">Schweizerisch</option>
+          <option value="RUS">Russisch</option>
+          <option value="USA">Amerikanisch</option>
+          <option value="BRA">Brasilianisch</option>
+          <option value="other">Sonstiges</option>
         </select>
       </p>
     )
