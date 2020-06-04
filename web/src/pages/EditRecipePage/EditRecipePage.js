@@ -50,7 +50,8 @@ const EditRecipePage = (data) => {
           author: recipe.author,
         },
       },
-    })
+    });
+    window.location.reload();
   }
 
   // init recipe data

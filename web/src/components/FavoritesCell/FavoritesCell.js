@@ -43,10 +43,12 @@ export const Success = ({ recipes }) => {
   return favs.map((favorite) => (
     // eslint-disable-next-line react/jsx-key
     <div
+      key={favorite.id}
       style={styles.list}
       onClick={() => navigate(routes.recipe({ id: favorite.id }))}
     >
       <FavListItem
+        key={favorite.id}
         title={favorite.title}
         duration={favorite.duration}
         nationality={favorite.nationality}
