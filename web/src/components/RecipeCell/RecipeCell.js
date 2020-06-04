@@ -183,7 +183,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#b6d7a8ff',
-    width: 200,
+    width: 300,
     borderRadius: 10,
     padding: 10,
   },
