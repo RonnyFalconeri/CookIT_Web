@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { routes, navigate } from '@redwoodjs/router'
 // import NewRecipeCell from 'src/components/NewRecipeCell'
 import { Form, Submit, FormError, useMutation } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
@@ -56,6 +57,7 @@ const EditRecipePage = (data) => {
 
   // init recipe data
   const [recipe, setRecipe] = useState({
+    id: parseInt(data.id),
     image: data.image,
     title: data.title,
     duration: data.duration,
@@ -164,7 +166,9 @@ const EditRecipePage = (data) => {
             <input type="button" value="Speichern" style={styles.saveButton} />
           </Submit>
 
-          <input type="button" value="Abbrechen" style={styles.cancelButton} />
+          <input type="button" value="Abbrechen" style={styles.cancelButton} onClick={() => navigate(routes.recipe({ id: recipe.id }))} />
+          <input type="button" value="Löschen" style={styles.deleteButton} onClick={() => navigate(routes.recipes())} />
+
         </div>
       </Form>
     </PageContainerLayout>
@@ -215,4 +219,17 @@ const styles = {
     color: 'white',
     cursor: 'pointer',
   },
+  deleteButton: {
+    width: 170,
+    height: 50,
+    borderRadius: 10,
+    padding: 5,
+    backgroundColor: 'red',
+    border: '1px solid grey',
+    boxShadow: 'none',
+    fontSize: 21,
+    fontWeight: 'bold',
+    color: 'white',
+    cursor: 'pointer',
+  }
 }
