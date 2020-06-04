@@ -28,6 +28,7 @@ export const Success = ({ recipes }) => {
   return recipes.map((recipe) => (
     // eslint-disable-next-line react/jsx-key
     <div
+      key={recipe.id}
       style={styles.list}
       onClick={() => navigate(routes.recipe({ id: recipe.id }))}
     >
