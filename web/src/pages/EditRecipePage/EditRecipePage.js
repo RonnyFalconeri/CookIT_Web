@@ -12,9 +12,9 @@ import IngredientsInput from 'src/components/IngredientsInput'
 import PreparationInput from 'src/components/PreparationInput'
 import AuthorInput from 'src/components/AuthorInput'
 
-export const CREATE_RECIPE_MUTATION = gql`
-  mutation createRecipe($input: CreateRecipeInput!) {
-    createRecipe(input: $input) {
+export const UPDATE_RECIPE_MUTATION = gql`
+  mutation updateRecipe($id: Int!, $input: UpdateRecipeInput!) {
+    updateRecipe(id: $id, input: $input) {
       title
       duration
       nationality
@@ -22,14 +22,14 @@ export const CREATE_RECIPE_MUTATION = gql`
       preparation
       image
       author
-      favorite
     }
   }
 `
+
 const EditRecipePage = (data) => {
   const formMethods = useForm()
 
-  const [create, { loading, error }] = useMutation(CREATE_RECIPE_MUTATION, {
+  const [create, { loading, error }] = useMutation(UPDATE_RECIPE_MUTATION, {
     onCompleted: () => {
       alert('Thank you for your submission!')
       formMethods.reset()
@@ -39,6 +39,7 @@ const EditRecipePage = (data) => {
   const onSubmit = () => {
     create({
       variables: {
+        id: Number(data.id),
         input: {
           title: recipe.title,
           duration: recipe.duration,
@@ -47,7 +48,6 @@ const EditRecipePage = (data) => {
           preparation: recipe.preparation,
           image: recipe.image,
           author: recipe.author,
-          favorite: recipe.favorite,
         },
       },
     })
@@ -95,7 +95,7 @@ const EditRecipePage = (data) => {
   }
 
   return (
-    <PageContainerLayout title="Neues Rezept">
+    <PageContainerLayout title="Rezept Überarbeiten">
       <Form
         onSubmit={onSubmit}
         validation={{ mode: 'onBlur' }}
@@ -160,20 +160,10 @@ const EditRecipePage = (data) => {
 
         <div style={styles.row}>
           <Submit>
-            <input
-              type="button"
-              value="Speichern"
-              style={styles.saveButton}
-              onClick={() => console.log(recipe)}
-            />
+            <input type="button" value="Speichern" style={styles.saveButton} />
           </Submit>
 
-          <input
-            type="button"
-            value="Abbrechen"
-            style={styles.cancelButton}
-            onClick={() => console.log(recipe)}
-          />
+          <input type="button" value="Abbrechen" style={styles.cancelButton} />
         </div>
       </Form>
     </PageContainerLayout>
@@ -223,5 +213,5 @@ const styles = {
     fontWeight: 'bold',
     color: 'white',
     cursor: 'pointer',
-  }
+  },
 }
