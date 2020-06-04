@@ -115,7 +115,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#b6d7a8ff',
-    width: 200,
+    width: 300,
     borderRadius: 10,
     padding: 10
   },
@@ -125,7 +125,7 @@ const styles = {
   },
   ingredientsInput: {
     height: 30,
-    width: 75,
+    width: 130,
     padding: 3,
     margin: 5,
     border: 'none',

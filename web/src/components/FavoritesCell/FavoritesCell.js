@@ -71,6 +71,11 @@ const styles = {
     cursor: 'pointer',
     boxShadow: '0 4px 4px 0 grey',
   },
+  list: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
   title: {
     color: 'white',
     width: 450,

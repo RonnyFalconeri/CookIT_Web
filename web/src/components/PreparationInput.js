@@ -27,6 +27,7 @@ const styles = {
   preparationInput: {
     width: 600,
     height: 100,
-    border: 'none',
+    padding: 10,
+    border: 'none'
   }
 };
