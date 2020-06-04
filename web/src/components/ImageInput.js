@@ -8,7 +8,7 @@ export default class ImageInput extends React.Component {
   render() {
 
     let image;
-    if (this.state.image_passed == null) {
+    if (this.state.image_passed == null || this.state.image_passed == 'null') {
       image = <img src={this.state.image_default} style={styles.image} />
     } else {
       image = <img src={this.state.image_passed} style={styles.image} />

@@ -77,7 +77,7 @@ export const Success = ({ recipe }) => {
         <div style={styles.containerTitle}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <h1 style={styles.title}>{Recipe.title}</h1>
-            <EditButton data={Recipe} />
+            <EditButton data={recipe} />
           </div>
 
           <div
