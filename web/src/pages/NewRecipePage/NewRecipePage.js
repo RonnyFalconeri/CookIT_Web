@@ -65,6 +65,20 @@ const NewRecipePage = () => {
     favorite: false,
   })
 
+  // init recipe data
+  const [showInfo, setShowInfo] = useState('none')
+
+  //validate inputs
+  const _validateInputs = () => {
+    let weiter = true;
+    setShowInfo('none');
+    if (recipe.title == "" || recipe.duration == "" || recipe.preparation == "" || recipe.author == "") {
+      // if false, show error info
+      weiter = false;
+      setShowInfo('block');
+    }
+  }
+
   // handle input changes
   const _handleImageInput = (value) => {
     setRecipe({ ...recipe, image: value })
@@ -107,7 +121,10 @@ const NewRecipePage = () => {
           wrapperStyle={{ color: 'red', backgroundColor: 'lavenderblush' }}
         />
 
+        <p style={{ ...styles.errorInfo, ...{ display: showInfo } }}>Fehler: Bitte füllen Sie alle Eingabefelder aus.</p>
+
         <div style={styles.row}>
+
           <ImageInput
             value={recipe.image}
             onChange={(value) => _handleImageInput(value)}
@@ -181,6 +198,11 @@ const styles = {
     justifyContent: 'space-evenly',
     alignItems: 'center',
     margin: 10,
+  },
+  errorInfo: {
+    textAlign: 'center',
+    color: 'red',
+    marginBottom: 20
   },
   containerTitle: {
     display: 'flex',
