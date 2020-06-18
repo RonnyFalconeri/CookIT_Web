@@ -39,7 +39,7 @@ export const Failure = ({ error }) => <div>Error: {error.message}</div>
 export const Success = ({ recipe }) => {
   // init recipe data
   const [Recipe, setRecipe] = useState({
-    image: null,
+    image: recipe.image,
     title: recipe.title,
     duration: recipe.duration,
     nationality: recipe.nationality,
@@ -89,10 +89,7 @@ export const Success = ({ recipe }) => {
   return (
     <PageContainerLayout title="Rezept">
       <div style={styles.row}>
-        <img
-          src="../../../public/images/recipeDefaultImage.png"
-          style={styles.image}
-        />
+        <img src={Recipe.image} style={styles.image} />
 
         <Add2Favorites
           favorite={Recipe.favorite}

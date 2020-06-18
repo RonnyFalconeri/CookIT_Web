@@ -8,8 +8,7 @@ generator client {
   binaryTargets = env("BINARY_TARGET")
 }
 
-// Define your own datamodels here and run `yarn redwood db save` to create
-// migrations for them.
+
 model Recipe {
   // simple model for a recipe
   id          Int       @default(autoincrement()) @id
@@ -23,3 +22,5 @@ model Recipe {
   favorite    Boolean?
   created_at  DateTime? @default(now())
 }
+
+

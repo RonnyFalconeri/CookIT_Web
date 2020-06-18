@@ -12,7 +12,6 @@ export default class Add2Favorites extends React.Component {
     } else {
       fav = true
     }
-    console.log('fav bool before callback ' + fav)
     this.props.callback(fav) // pass change up
   }
 

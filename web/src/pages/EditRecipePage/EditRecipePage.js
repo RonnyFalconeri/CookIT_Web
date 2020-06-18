@@ -27,18 +27,38 @@ export const UPDATE_RECIPE_MUTATION = gql`
   }
 `
 
+export const DELETE_RECIPE_MUTATION = gql`
+  mutation deleteRecipe($id: Int!) {
+    deleteRecipe(id: $id) {
+      id
+    }
+  }
+`
+
 const EditRecipePage = (data) => {
   const formMethods = useForm()
 
-  const [create, { loading, error }] = useMutation(UPDATE_RECIPE_MUTATION, {
+  const [update, { loading, error }] = useMutation(UPDATE_RECIPE_MUTATION, {
     onCompleted: () => {
       alert('Thank you for your submission!')
       formMethods.reset()
+      window.location.href = '/recipes'
     },
   })
 
+  const [remove, { delLoading, delerror }] = useMutation(
+    DELETE_RECIPE_MUTATION,
+    {
+      onCompleted: () => {
+        alert('Recipe deleted')
+        formMethods.reset()
+        window.location.href = '/recipes'
+      },
+    }
+  )
+
   const onSubmit = () => {
-    create({
+    update({
       variables: {
         id: Number(data.id),
         input: {
@@ -51,8 +71,7 @@ const EditRecipePage = (data) => {
           author: recipe.author,
         },
       },
-    });
-    window.location.reload();
+    })
   }
 
   // init recipe data
@@ -97,6 +116,12 @@ const EditRecipePage = (data) => {
     setRecipe({ ...recipe, author: value })
   }
 
+  const addImageCallback = (base64Image) => {
+    console.log('image passed up ' + base64Image)
+    setRecipe({ image: base64Image })
+    window.location.reload()
+  }
+
   return (
     <PageContainerLayout title="Rezept Überarbeiten">
       <Form
@@ -114,6 +139,7 @@ const EditRecipePage = (data) => {
           <ImageInput
             value={recipe.image}
             onChange={(value) => _handleImageInput(value)}
+            callback={addImageCallback}
           />
 
           <div style={styles.containerTitle}>
@@ -166,9 +192,25 @@ const EditRecipePage = (data) => {
             <input type="button" value="Speichern" style={styles.saveButton} />
           </Submit>
 
-          <input type="button" value="Abbrechen" style={styles.cancelButton} onClick={() => navigate(routes.recipe({ id: recipe.id }))} />
-          <input type="button" value="Löschen" style={styles.deleteButton} onClick={() => navigate(routes.recipes())} />
-
+          <input
+            type="button"
+            value="Abbrechen"
+            style={styles.cancelButton}
+            onClick={() => navigate(routes.recipe({ id: recipe.id }))}
+          />
+          <input
+            type="button"
+            value="Löschen"
+            style={styles.deleteButton}
+            onClick={() =>
+              remove({
+                variables: {
+                  id: Number(data.id),
+                },
+              })
+            }
+            error={delerror}
+          />
         </div>
       </Form>
     </PageContainerLayout>
@@ -231,5 +273,5 @@ const styles = {
     fontWeight: 'bold',
     color: 'white',
     cursor: 'pointer',
-  }
+  },
 }
