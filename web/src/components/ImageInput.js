@@ -21,7 +21,6 @@ export default class ImageInput extends React.Component {
     reader.readAsDataURL(blobData)
     reader.onloadend = function () {
       var base64data = reader.result
-      console.log(typeof base64data)
       callback(base64data)
     }
   }
@@ -31,14 +30,10 @@ export default class ImageInput extends React.Component {
     if (this.state.image_passed == null || this.state.image_passed == 'null') {
       image = <img src={this.state.image_default} style={styles.image} />
     } else {
-      console.log('image passed: ' + this.state.image_passed)
-      console.log(typeof this.state.image_passed)
-      console.log(this.state.image_picked)
       image = <img src={this.state.image_passed} style={styles.image} />
     }
 
     if (this.state.image_picked != null) {
-      console.log('image picked: ' + this.state.image_picked)
       image = <img src={this.state.image_picked} style={styles.image} />
     }
 
@@ -59,6 +54,8 @@ export default class ImageInput extends React.Component {
             style={{ display: 'none' }}
             onChange={(event) => {
               if (event.target.value.length != 0) {
+                console.log('event.target')
+                console.log(event.target)
                 this.blobBase64(event.target.files[0], this.setImageState)
                 this.props.onChange(
                   this.state.image_picked // URL.createObjectURL(event.target.files[0])
