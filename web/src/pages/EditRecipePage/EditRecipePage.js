@@ -143,7 +143,6 @@ const EditRecipePage = (data) => {
   const addImageCallback = (base64Image) => {
     console.log('image passed up ' + base64Image)
     setRecipe({ image: base64Image })
-    window.location.reload()
   }
 
   return (
