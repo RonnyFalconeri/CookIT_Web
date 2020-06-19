@@ -1,4 +1,4 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import '../../../public/css/styling.css';
 
 const PageContainerLayout = ({ children, title }) => {
@@ -6,14 +6,14 @@ const PageContainerLayout = ({ children, title }) => {
     <div style={styles.container}>
 
       <div style={styles.header}>
-        <Link to={routes.home()}>
+        <a href="/">
           <img src="../../../public/images/backButton.png" style={{ width: 40, position: 'relative', left: -200 }} />
-        </Link>
+        </a>
 
         <h1>{title}</h1>
-        <Link to={routes.home()}>
+        <a href="/">
           <img src="../../../public/images/icon.png" style={styles.headerIcon} />
-        </Link>
+        </a>
       </div>
 
       <main style={styles.mainContent}>{children}</main>
