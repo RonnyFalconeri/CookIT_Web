@@ -25,6 +25,9 @@ export const Empty = () => <div>Empty</div>
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ recipes }) => {
+  // sort recipes alphabetically and render them to the page.
+  recipes.sort((a, b) => a.title.localeCompare(b.title))
+
   return recipes.map((recipe) => (
     // eslint-disable-next-line react/jsx-key
     <div

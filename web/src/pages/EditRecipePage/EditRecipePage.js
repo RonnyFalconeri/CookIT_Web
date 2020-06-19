@@ -58,20 +58,24 @@ const EditRecipePage = (data) => {
   )
 
   const onSubmit = () => {
-    update({
-      variables: {
-        id: Number(data.id),
-        input: {
-          title: recipe.title,
-          duration: recipe.duration,
-          nationality: recipe.nationality,
-          ingredients: JSON.stringify(recipe.ingredients),
-          preparation: recipe.preparation,
-          image: recipe.image,
-          author: recipe.author,
+    var valid = _validateInputs()
+
+    if (valid) {
+      update({
+        variables: {
+          id: Number(data.id),
+          input: {
+            title: recipe.title,
+            duration: recipe.duration,
+            nationality: recipe.nationality,
+            ingredients: JSON.stringify(recipe.ingredients),
+            preparation: recipe.preparation,
+            image: recipe.image,
+            author: recipe.author,
+          },
         },
-      },
-    })
+      })
+    }
   }
 
   // init recipe data
@@ -92,13 +96,19 @@ const EditRecipePage = (data) => {
 
   //validate inputs
   const _validateInputs = () => {
-    let weiter = true;
-    setShowInfo('none');
-    if (recipe.title == "" || recipe.duration == "" || recipe.preparation == "" || recipe.author == "") {
+    let valid = true
+    setShowInfo('none')
+    if (
+      recipe.title == '' ||
+      recipe.duration == '' ||
+      recipe.preparation == '' ||
+      recipe.author == ''
+    ) {
       // if false, show error info
-      weiter = false;
-      setShowInfo('block');
+      valid = false
+      setShowInfo('block')
     }
+    return valid
   }
 
   // handle input changes
@@ -149,7 +159,9 @@ const EditRecipePage = (data) => {
           wrapperStyle={{ color: 'red', backgroundColor: 'lavenderblush' }}
         />
 
-        <p style={{ ...styles.errorInfo, ...{ display: showInfo } }}>Fehler: Bitte füllen Sie alle Eingabefelder aus.</p>
+        <p style={{ ...styles.errorInfo, ...{ display: showInfo } }}>
+          Fehler: Bitte füllen Sie alle Eingabefelder aus.
+        </p>
 
         <div style={styles.row}>
           <ImageInput
@@ -289,5 +301,10 @@ const styles = {
     fontWeight: 'bold',
     color: 'white',
     cursor: 'pointer',
+  },
+  errorInfo: {
+    textAlign: 'center',
+    color: 'red',
+    marginBottom: 20,
   },
 }

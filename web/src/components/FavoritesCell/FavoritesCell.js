@@ -39,6 +39,8 @@ export const Success = ({ recipes }) => {
     }
   })
 
+  recipes.sort((a, b) => a.title.localeCompare(b.title))
+
   // map the favorites to FavListItem components
   return favs.map((favorite) => (
     // eslint-disable-next-line react/jsx-key
