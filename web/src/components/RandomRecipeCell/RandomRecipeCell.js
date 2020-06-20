@@ -26,7 +26,7 @@ export const Success = ({ recipes }) => {
   /**
    *  Creating a randomized GraphQL query from scratch is a bit of a headache. Instead we grab the full
    *  DB, using the length of the response as the ceiling for a randomized number. Grab the recipe with
-   *  the ID matching the random number, and render it to the page.
+   *  the index matching the random number, and render it to the page.
    *
    */
 
