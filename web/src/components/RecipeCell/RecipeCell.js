@@ -6,6 +6,12 @@ import EditButton from 'src/components/EditButton'
 
 import Add2Favorites from '../Add2Favorites'
 
+/**
+ *
+ * This cell pulls a specific recipe from the databank and displays it, as well as handling logic for flagging
+ * favorites.
+ *
+ */
 export const QUERY = gql`
   query($id: Int!) {
     recipe(id: $id) {

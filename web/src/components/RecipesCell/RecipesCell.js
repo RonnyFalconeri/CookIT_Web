@@ -4,6 +4,11 @@ import { empty } from 'apollo-link'
 
 import RecipesListItem from 'src/components/RecipesListItem'
 
+/**
+ *
+ * This cell generates a list of recipe items from the databank.
+ *
+ */
 export const QUERY = gql`
   query {
     recipes {
@@ -33,11 +38,11 @@ export const CREATE_RECIPE_MUTATION = gql`
     }
   }
 `
-
+// this array contains default recipes for populating the db when the site is first launched.
 let defaultRecipes = [
   {
     id: 'default_1',
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: 'Trofie alla Bolognese',
     duration: '90',
     nationality: 'ITA',
@@ -62,7 +67,7 @@ let defaultRecipes = [
   },
   {
     id: 'default_2',
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: 'Guacamole',
     duration: '10',
     nationality: 'MEX',
@@ -78,13 +83,13 @@ let defaultRecipes = [
     ],
     preparation:
       'Tomaten, Knoblauch, Zwiebel, Chillischoten klein schneiden. Avocados mit einem Löffel aushüllen und zu den anderen Zutaten hinzufügen und mit Messer/Löffel/Gabel zerkleinern, dann Zitrone auspressen. Zuletzt mit einem Mixer alles zerkleinern und dabei Salz und Pfeffer hinzufügen. ',
-    favorite: true,
+    favorite: '../../../public/images/recipeDefaultImage.png',
     author: 'Ronny Falconeri',
     createdAt: '00:00 Uhr, 25. Mai 2020',
   },
   {
     id: 'default_3',
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: 'Gebackende Dorate',
     duration: '50',
     nationality: 'ITA',
@@ -105,7 +110,7 @@ let defaultRecipes = [
   },
   {
     id: 'default_4',
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: 'Penne mit Zuchini-Sahne-Soße',
     duration: '20',
     nationality: 'ITA',
@@ -128,7 +133,7 @@ let defaultRecipes = [
   },
   {
     id: 'default_5',
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: 'Sarma',
     duration: '110',
     nationality: 'TUR',
@@ -159,7 +164,7 @@ let defaultRecipes = [
   },
   {
     id: 'default_6',
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: 'Jägermeister-Soße für Burger',
     duration: '30',
     nationality: 'GER',
@@ -179,7 +184,7 @@ let defaultRecipes = [
   },
   {
     id: 'default_7',
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: 'Klassische Burger',
     duration: '60',
     nationality: 'USA',
@@ -200,7 +205,7 @@ let defaultRecipes = [
   },
   {
     id: 'default_8',
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: 'Pilzsalat',
     duration: '30',
     nationality: 'GER',
@@ -230,8 +235,18 @@ let emptyData = true
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => {
+  /**
+   *
+   * The DB is empty when the website is launched for the very first time. We use the empty response here
+   * to populate the DB with the above default recipes so the user has a basis to start with.
+   *
+   */
   const [create, { loading, error }] = useMutation(CREATE_RECIPE_MUTATION)
   if (emptyData) {
+    // provide the user with some feedback when they first load the site.
+    alert(
+      "Cookbook empty! We're cooking up some delicious defaults for you. Page may require reloading. "
+    )
     emptyData = false
     for (var i = 0; i < defaultRecipes.length; i++) {
       create({

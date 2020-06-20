@@ -1,4 +1,14 @@
-import { Blob } from 'node-fetch'
+/**
+ *
+ *
+ * This class is used to manipulate blob objects for the displaying of images associated with a recipe.
+ * Unfortunately this feature cannont be used at this time, as GraphQL handles base64 strings needed to display
+ * Images poorly, leading to crashes with a 431 error. Because the prototype uses a local database instead of a CDN,
+ * Default images are hardcoded and this class remains (mostly) unused. However, this could be quickly implemented together with
+ * a CDN to allow for dynamic images.
+ *
+ *
+ */
 
 export default class ImageInput extends React.Component {
   constructor(props) {
@@ -11,6 +21,7 @@ export default class ImageInput extends React.Component {
     image_picked: null,
   }
 
+  // setImageState and blobBase64 convert blob data to base64 and pass it to the state, see above docstring for more commentary.
   setImageState(base64data) {
     this.setState({ image_picked: base64data })
     this.props.callback(base64data.split(',')[1])
@@ -54,12 +65,7 @@ export default class ImageInput extends React.Component {
             style={{ display: 'none' }}
             onChange={(event) => {
               if (event.target.value.length != 0) {
-                console.log('event.target')
-                console.log(event.target)
-                this.blobBase64(event.target.files[0], this.setImageState)
-                this.props.onChange(
-                  this.state.image_picked // URL.createObjectURL(event.target.files[0])
-                )
+                alert('Images cannot be added at this time!') // we don't have a CDN, images are hardcoded at this time.
               } else {
                 this.setState({ image_picked: null })
                 this.props.onChange(null)

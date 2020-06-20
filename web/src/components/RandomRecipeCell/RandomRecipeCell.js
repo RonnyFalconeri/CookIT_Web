@@ -20,9 +20,7 @@ export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
 
-export const Failure = ({ error }) => {
-  console.log(error.message)
-} // <div>Error: {error.message}</div>
+export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ recipes }) => {
   /**
@@ -40,8 +38,10 @@ export const Success = ({ recipes }) => {
   }
 
   let responseLength = 0
+  let recipesHolder = []
   recipes.forEach((element) => {
     responseLength = responseLength + 1 // seed for generating the random number
+    recipesHolder.push(element)
   })
 
   let random = getRandomInclusive(1, responseLength)
@@ -56,20 +56,12 @@ export const Success = ({ recipes }) => {
     favorite: '',
   })
 
-  //iterate over the response, grab the "random" recipe, and pass it to the state.
-  recipes.forEach((element) => {
-    for (const key in element) {
-      if (element.hasOwnProperty(key) && key == 'id') {
-        if (element[key] == random) {
-          for (const key in element) {
-            if (element.hasOwnProperty(key)) {
-              recipe[key] = element[key]
-            }
-          }
-        }
-      }
+  // grab a random recipe
+  for (const key in recipesHolder[random]) {
+    if (recipesHolder[random].hasOwnProperty(key)) {
+      recipe[key] = recipesHolder[random][key]
     }
-  })
+  }
 
   return (
     <PageContainerLayout title="Zufälliges Rezept">

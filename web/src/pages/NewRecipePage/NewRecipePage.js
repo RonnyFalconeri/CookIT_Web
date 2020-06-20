@@ -1,5 +1,4 @@
 import { useState } from 'react'
-// import NewRecipeCell from 'src/components/NewRecipeCell'
 import { Form, Submit, FormError, useMutation } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
 import PageContainerLayout from 'src/layouts/PageContainerLayout'
@@ -12,6 +11,11 @@ import IngredientsInput from 'src/components/IngredientsInput'
 import PreparationInput from 'src/components/PreparationInput'
 import AuthorInput from 'src/components/AuthorInput'
 
+/**
+ *
+ * A page with logic for writing new recipes to the databank via CREATE_RECIPE_MUTATION
+ *
+ */
 export const CREATE_RECIPE_MUTATION = gql`
   mutation createRecipe($input: CreateRecipeInput!) {
     createRecipe(input: $input) {
@@ -29,6 +33,7 @@ export const CREATE_RECIPE_MUTATION = gql`
 const NewRecipePage = () => {
   const formMethods = useForm()
 
+  // use mutation to write new recipe to db
   const [create, { loading, error }] = useMutation(CREATE_RECIPE_MUTATION, {
     onCompleted: () => {
       alert('Thank you for your submission!')
@@ -37,7 +42,7 @@ const NewRecipePage = () => {
   })
 
   const onSubmit = () => {
-    var valid = _validateInputs()
+    var valid = _validateInputs() // make sure form is filled out
 
     if (valid) {
       create({
@@ -59,7 +64,7 @@ const NewRecipePage = () => {
 
   // init recipe data
   const [recipe, setRecipe] = useState({
-    image: null,
+    image: '../../../public/images/recipeDefaultImage.png',
     title: '',
     duration: '',
     nationality: 'none',

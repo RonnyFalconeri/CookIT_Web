@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { routes, navigate } from '@redwoodjs/router'
-// import NewRecipeCell from 'src/components/NewRecipeCell'
 import { Form, Submit, FormError, useMutation } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
 import PageContainerLayout from 'src/layouts/PageContainerLayout'
@@ -13,6 +12,13 @@ import IngredientsInput from 'src/components/IngredientsInput'
 import PreparationInput from 'src/components/PreparationInput'
 import AuthorInput from 'src/components/AuthorInput'
 
+/**
+ *
+ * A page for editing a recipe. Contains mutations for updating/deleting databank entries.
+ *
+ */
+
+// mutation for updating a recipe
 export const UPDATE_RECIPE_MUTATION = gql`
   mutation updateRecipe($id: Int!, $input: UpdateRecipeInput!) {
     updateRecipe(id: $id, input: $input) {
@@ -38,19 +44,21 @@ export const DELETE_RECIPE_MUTATION = gql`
 const EditRecipePage = (data) => {
   const formMethods = useForm()
 
+  // update mutation function
   const [update, { loading, error }] = useMutation(UPDATE_RECIPE_MUTATION, {
     onCompleted: () => {
-      alert('Thank you for your submission!')
+      alert('Thank you for your submission!') // user feedback
       formMethods.reset()
       window.location.href = '/recipes'
     },
   })
 
+  // delete recipe mutation function
   const [remove, { delLoading, delerror }] = useMutation(
     DELETE_RECIPE_MUTATION,
     {
       onCompleted: () => {
-        alert('Recipe deleted')
+        alert('Recipe deleted') // user feedback
         formMethods.reset()
         window.location.href = '/recipes'
       },
@@ -140,8 +148,8 @@ const EditRecipePage = (data) => {
     setRecipe({ ...recipe, author: value })
   }
 
-  const addImageCallback = (base64Image) => {
-    setRecipe({ image: base64Image })
+  const addImageCallback = () => {
+    setRecipe({ image: '../../../public/images/recipeDefaultImage.png' })
   }
 
   return (

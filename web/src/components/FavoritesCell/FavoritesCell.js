@@ -2,6 +2,13 @@ import { routes, navigate } from '@redwoodjs/router'
 
 import FavListItem from 'src/components/FavListItem'
 
+/**
+ *
+ * This cell gets the favorite recipes of the user out of the db and displays them in a list.
+ *
+ */
+
+// query all recipes in the db for filtering
 export const QUERY = gql`
   query {
     recipes {
@@ -25,7 +32,8 @@ export const Empty = () => <div>Empty</div>
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ recipes }) => {
-  // Filter the recipes that have been flagged as favorites and place them in an array
+  // Filter the recipes that have been flagged as favorites and place them in an array,
+  // GraphQL queries don't easily allow for complex filtering in the query.
   var favs = []
   recipes.forEach((recipe) => {
     for (const key in recipe) {
@@ -39,7 +47,7 @@ export const Success = ({ recipes }) => {
     }
   })
 
-  recipes.sort((a, b) => a.title.localeCompare(b.title))
+  recipes.sort((a, b) => a.title.localeCompare(b.title)) // sort alphabetically
 
   // map the favorites to FavListItem components
   return favs.map((favorite) => (
